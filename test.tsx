@@ -1,4 +1,4 @@
-import { render, screen} from '@testing-library/react';
+import { render, screen, act } from '@testing-library/react';
 import Home from '@/app/page';
 
 describe('Home', () => {
@@ -19,7 +19,9 @@ describe('Home', () => {
             name: /Add to basket/i,
         });
 
-        await buttons[0].click();
+        await act(async () => {
+            buttons[0].click();
+        });
 
         const basketButton = screen.getByRole('button', {
             name: /Basket:/i,
@@ -35,9 +37,11 @@ describe('Home', () => {
             name: /Add to basket/i,
         });
 
-        await buttons[0].click();
-        await buttons[1].click();
-        await buttons[1].click();
+        await act(async () => {
+            buttons[0].click();
+            buttons[1].click();
+            buttons[1].click();
+        });
 
         const basketButton = screen.getByRole('button', {
             name: /Basket:/i,
