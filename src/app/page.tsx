@@ -37,7 +37,7 @@ export default function Home() {
         <main className={styles.main}>
             <div className={styles.description}>
                 <p>Michael&apos;s Amazing Web Store</p>
-                <div>
+                <div className={styles.basketContainer}>
                     <button className={styles.basket}>
                         Basket: {itemCount} {itemCount === 1 ? 'item' : 'items'}
                     </button>

@@ -41,6 +41,10 @@
     width: var(--max-width);
 }
 
+.basketContainer {
+    min-width: 170px;
+}
+
 .basket,
 .card {
     cursor: pointer;
