@@ -97,9 +97,7 @@
     }
 
     .grid {
-        display: flex;
-        flex-direction: column;
-        align-items: center;
+        grid-template-columns: 100%;
         margin-bottom: 120px;
         max-width: 320px;
         text-align: center;
