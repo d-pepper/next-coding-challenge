@@ -14,6 +14,13 @@ export default function Home() {
     const [items, setItems] = useState<{ name: string; quantity: number }[]>([]);
     const [itemCount, setItemCount] = useState<number>(0);
 
+    const productArray = [
+        { name: 'Item 1', desc: 'Foo' },
+        { name: 'Item 2', desc: 'Bar' },
+        { name: 'Item 3', desc: 'Baz' },
+        { name: 'Item 4', desc: 'Qux' },
+    ];
+
     const addToCart = (product: string) => {
         const alreadyInCart = items.find((item) => item.name === product);
         if (alreadyInCart) {
@@ -40,10 +47,16 @@ export default function Home() {
                     <button className={styles.basket}>
                         Basket: {itemCount} {itemCount === 1 ? 'item' : 'items'}
                     </button>
-                    <ItemCount name="Item 1" count={items.find((item) => item.name === 'Item 1')?.quantity || 0} />
-                    <ItemCount name="Item 2" count={items.find((item) => item.name === 'Item 2')?.quantity || 0} />
-                    <ItemCount name="Item 3" count={items.find((item) => item.name === 'Item 3')?.quantity || 0} />
-                    <ItemCount name="Item 4" count={items.find((item) => item.name === 'Item 4')?.quantity || 0} />
+                    {productArray.map((product) => {
+                        return (
+                            <div key={product.name}>
+                                <ItemCount
+                                    name={product.name}
+                                    count={items.find((item) => item.name === product.name)?.quantity || 0}
+                                />
+                            </div>
+                        );
+                    })}
                 </div>
             </div>
 
