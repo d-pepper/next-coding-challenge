@@ -1,14 +1,7 @@
 'use client';
 import { useState } from 'react';
 import styles from './page.module.css';
-
-function ItemCount({ count, name }: { count: number; name: string }) {
-    return (
-        <div key={name}>
-            {name} count: {count}
-        </div>
-    );
-}
+import ItemCount from './components/ItemCount';
 
 export default function Home() {
     const [items, setItems] = useState<{ name: string; quantity: number }[]>([]);
