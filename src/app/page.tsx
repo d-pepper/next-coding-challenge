@@ -61,30 +61,22 @@ export default function Home() {
             </div>
 
             <div className={styles.grid}>
-                <button className={styles.card} onClick={() => addToCart('Item 1')} aria-label="Add to basket">
-                    <h2>
-                        Item 1 <span>-&gt;</span>
-                    </h2>
-                    <p>Foo</p>
-                </button>
-                <button className={styles.card} onClick={() => addToCart('Item 2')} aria-label="Add to basket">
-                    <h2>
-                        Item 2 <span>-&gt;</span>
-                    </h2>
-                    <p>Bar</p>
-                </button>
-                <button className={styles.card} onClick={() => addToCart('Item 3')} aria-label="Add to basket">
-                    <h2>
-                        Item 3 <span>-&gt;</span>
-                    </h2>
-                    <p>Baz</p>
-                </button>
-                <button className={styles.card} onClick={() => addToCart('Item 4')} aria-label="Add to basket">
-                    <h2>
-                        Item 4 <span>-&gt;</span>
-                    </h2>
-                    <p>Qux</p>
-                </button>
+                {productArray.map((product, i) => {
+                    return (
+                        <div key={product.name + i}>
+                            <button
+                                className={styles.card}
+                                onClick={() => addToCart(product.name)}
+                                aria-label="Add to basket"
+                            >
+                                <h2>
+                                    {product.name} <span>-&gt;</span>
+                                </h2>
+                                <p>{product.desc}</p>
+                            </button>
+                        </div>
+                    );
+                })}
             </div>
         </main>
     );
