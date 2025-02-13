@@ -2,6 +2,7 @@
 import { useState } from 'react';
 import styles from './page.module.css';
 import ItemCount from './components/ItemCount';
+import ProductButton from './components/ProductButton';
 
 export default function Home() {
     const [items, setItems] = useState<{ name: string; quantity: number }[]>([]);
@@ -57,16 +58,7 @@ export default function Home() {
                 {productArray.map((product, i) => {
                     return (
                         <div key={product.name + i}>
-                            <button
-                                className={styles.card}
-                                onClick={() => addToCart(product.name)}
-                                aria-label="Add to basket"
-                            >
-                                <h2>
-                                    {product.name} <span>-&gt;</span>
-                                </h2>
-                                <p>{product.desc}</p>
-                            </button>
+                            <ProductButton addProduct={addToCart} product={product} />
                         </div>
                     );
                 })}
