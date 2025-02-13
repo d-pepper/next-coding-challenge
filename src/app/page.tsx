@@ -43,12 +43,11 @@ export default function Home() {
                     </button>
                     {productArray.map((product) => {
                         return (
-                            <div key={product.name}>
-                                <ItemCount
-                                    name={product.name}
-                                    count={items.find((item) => item.name === product.name)?.quantity || 0}
-                                />
-                            </div>
+                            <ItemCount
+                                key={product.name}
+                                name={product.name}
+                                count={items.find((item) => item.name === product.name)?.quantity || 0}
+                            />
                         );
                     })}
                 </div>
@@ -56,11 +55,7 @@ export default function Home() {
 
             <div className={styles.grid}>
                 {productArray.map((product, i) => {
-                    return (
-                        <div key={product.name + i}>
-                            <ProductButton addProduct={addToCart} product={product} />
-                        </div>
-                    );
+                    return <ProductButton key={product.name + i} addProduct={addToCart} product={product} />;
                 })}
             </div>
         </main>
